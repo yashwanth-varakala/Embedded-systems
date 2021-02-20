@@ -1,0 +1,73 @@
+from ohms_law import OV
+from inductive_law import IC
+from capacity_law import CL
+from oscillating_ckt import OCL
+
+object1= OV("","")
+newvol= object1.ohmsVoltage("","")
+print("\nvoltage(with current and resistance) from ohms law", newvol ,"volts")
+
+
+resistance_VR=float(input("\nenter the value of resistance"))
+current_VR = newvol / resistance_VR
+print("\ncurrent(with voltage and resistance) from ohms law", current_VR,"amps")
+
+
+resistance_RC = float(input("enter the resistance"))
+power_RC= (resistance_RC * (current_VR**2))
+print("\npower(resistance and current) from ohms value is",power_RC,"watts")
+
+voltage_PI=(power_RC/current_VR)
+print("\nvoltage(power and current) from ohms law is ",voltage_PI,"volts")
+
+voltage_PR= ((power_RC * resistance_RC)**1/2)
+print("\nvoltage(power and resistance) from ohms law is ",voltage_PR,"volts")
+
+current_PR = ((power_RC/resistance_RC)**(1/2))
+print("\ncurrent(with power and resistance) from ohms law", current_PR,"amps")
+
+current_PV = (power_RC/voltage_PR)
+print("\ncurrent(with power and voltage) from ohms law", current_PV,"amps")
+
+resistance_VP = (voltage_PR**2/power_RC)
+print("\nresistance(with power and voltage) from ohms law",resistance_VP,"ohms" )
+
+resistance_PI = (power_RC/current_PR**2)
+print("\nresistance(with power and current) from ohms law",resistance_PI,"ohms" )
+
+power_RI = voltage_PR * current_VR
+print("\npower(voltage and current) from ohms value is",power_RI,"watts")
+
+power_VR = (voltage_PR**2)/resistance_VP
+print("\npower(voltage and resistance) from ohms value is",power_VR,"watts")
+
+
+#inductive law
+#inductance
+object2 = IC("","")
+newind = object2.inductance("","")
+print("\ninductance from inductive law", newind ,"henry")
+
+#inductive resistance
+freqI = float(input("\nenter the frequency in hertz"))
+IR= 2 * 3.14 * newind * freqI
+print("\ninductive resistance is ", IR, "ohms")
+
+#capacity law
+#capacity
+
+object3= CL("","")
+newc=object3.capacitance("","")
+print("\ncapacity from capacity law is", newc,"farads")
+
+#capacitive resistance
+freqC = float(input("\nenter the frequency in hertz"))
+CR= 1/(2 * 3.14 * freqC * newc )
+print("\ncapacitive resistance from capacity law is", CR, "ohms" )
+
+
+#oscillating circuit law
+object4 = OCL("","")
+newF=object4.frequency("","")
+
+print("\nfrequency when capacity and inductance are given is ",newF, "hertz")
